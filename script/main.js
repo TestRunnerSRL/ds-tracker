@@ -448,7 +448,12 @@ function updateGridItem(row, index) {
             itemGrid[row][index]['item'].style.backgroundImage = 'url(images/' + item + itemsMax[item] + '.png)';
         }
 
-        itemGrid[row][index]['item'].style.border = '1px solid white';
+        if (selected.row === row && selected.col === index) {
+            itemGrid[row][index]['item'].style.border = '3px solid yellow';
+        }
+        else {
+            itemGrid[row][index]['item'].style.border = '1px solid white';
+        }
         itemGrid[row][index]['item'].className = 'griditem true'
 
         return;
@@ -539,7 +544,7 @@ function setMOff() {
 function gridItemClick(row, col, corner) {
     if (editmode) {
         if (selected.item) {
-            document.getElementById(selected.item).style.border = '1px solid white';
+            document.getElementById(selected.item).style.border = '0px solid white';
             var old = itemLayout[row][col];
 
             if (old == selected.item) {
